@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { RiMenu2Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,9 +46,11 @@ const Navbar = () => {
             Jobs
           </Button>
         </HStack>
-        <Button colorScheme="teal" variant="outline">
-          Login / Register
-        </Button>
+        <Link to="/login">
+          <Button colorScheme="teal" variant="outline">
+            Login / Register
+          </Button>
+        </Link>
       </Flex>
       <Drawer placement={"left"} onClose={onClose} isOpen={isOpen} size={"xs"}>
         <DrawerOverlay />
@@ -64,22 +67,20 @@ const Navbar = () => {
           </DrawerHeader>
           <DrawerBody>
             <VStack spacing={4} alignItems={"start"} h={"full"}>
-              <Button variant="link" colorScheme="teal">
+              <Button variant="link" colorScheme="teal" onClick={onClose}>
                 Mock Interview
               </Button>
-              <Button variant="link" colorScheme="teal">
+              <Button variant="link" colorScheme="teal" onClick={onClose}>
                 Resources
               </Button>
-              <Button variant="link" colorScheme="teal">
+              <Button variant="link" colorScheme="teal" onClick={onClose}>
                 Jobs
               </Button>
-              <Button
-                colorScheme="teal"
-                variant="outline"
-                w={"full"}
-              >
-                Login / Register
-              </Button>
+              <Link to="/login" onClick={onClose}>
+                <Button colorScheme="teal" variant="outline" w={"full"}>
+                  Login / Register
+                </Button>
+              </Link>
             </VStack>
           </DrawerBody>
         </DrawerContent>
