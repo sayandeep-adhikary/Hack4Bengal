@@ -10,6 +10,7 @@
 - [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
+- [Contributors](#contributors)
 - [License](#license)
 - [Contact](#contact)
 
@@ -100,6 +101,14 @@ Please follow these steps to contribute:
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+## Contributors
+This project was created with the collective efforts of:
+
+- [Sayandeep Adhikary - GitHub Profile](https://github.com/sayandeep-adhikary)
+- [Shuvayu Patra - GitHub Profile](https://github.com/shuvayu-patra)
+- [Shoaib Raja Molla - GitHub Profile](https://github.com/shoaibcodez)
+- [Aditya Giri - GitHub Profile](https://github.com/aditya-464)
 
 ## License
 
