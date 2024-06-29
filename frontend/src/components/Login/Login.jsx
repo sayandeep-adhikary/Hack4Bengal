@@ -16,8 +16,9 @@ import {
 import { useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ isCandidate, setIsCandidate }) {
   // const putData = () => {
   //   set(ref(db, "users/shuvayu"), {
   //     id: 1,
@@ -31,6 +32,7 @@ export default function Login() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
@@ -66,6 +68,10 @@ export default function Login() {
 
   const options = ["Candidate", "Company"];
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [signedup]);
+
   return (
     <>
       <Container my={10} minW={["", "container.sm"]}>
@@ -86,14 +92,44 @@ export default function Login() {
               justifyContent={"space-between"}
               gap={[1, 5]}
             >
-              {options.map((value) => {
+              {/* {options.map((value) => {
                 const radio = getRadioProps({ value });
                 return (
                   <RadioCard key={value} {...radio}>
                     {value}
                   </RadioCard>
                 );
-              })}
+              })} */}
+              <Box
+                minW="50%"
+                textAlign={"center"}
+                cursor="pointer"
+                borderWidth="1px"
+                borderRadius="md"
+                boxShadow="md"
+                px={5}
+                py={3}
+                color={isCandidate ? "white" : "black"}
+                backgroundColor={isCandidate ? "#658C4A" : ""}
+                onClick={() => setIsCandidate((prev) => !prev)}
+              >
+                Candidate
+              </Box>
+              <Box
+                minW="50%"
+                textAlign={"center"}
+                cursor="pointer"
+                borderWidth="1px"
+                borderRadius="md"
+                boxShadow="md"
+                px={5}
+                py={3}
+                color={isCandidate ? "black" : "white"}
+                backgroundColor={isCandidate ? "" : "#658C4A"}
+                onClick={() => setIsCandidate((prev) => !prev)}
+              >
+                Company
+              </Box>
             </HStack>
             {signedup ? (
               <>
@@ -173,6 +209,9 @@ export default function Login() {
               mt={4}
               w={"full"}
               // onClick={HandleButtonClick}
+              onClick={() => {
+                isCandidate ? navigate("/user") : navigate("/company");
+              }}
             >
               {signedup ? "Sign Up" : "Login"}
             </Button>
@@ -241,7 +280,6 @@ export default function Login() {
               w={"full"}
               onClick={() => {
                 setSignedUp(!signedup);
-                window.scrollTo(0, 0);
                 setName("");
                 setEmail("");
                 setPassword("");
@@ -261,9 +299,13 @@ function RadioCard(props) {
 
   const input = getInputProps();
   const checkbox = getRadioProps();
+  const handleClick = () => {
+    setIsCandidate(props.children === "Candidate" ? true : false);
+    console.log(isCandidate);
+  };
 
   return (
-    <Box as="label" minW={"50%"}>
+    <Box as="label" minW={"50%"} onClick={() => handleClick()}>
       <input {...input} required />
       <Box
         {...checkbox}

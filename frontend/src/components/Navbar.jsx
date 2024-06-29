@@ -18,10 +18,12 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import logo1 from "../assets/logo1.png";
+import { useState } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLoginClicked, setIsLoginClicked] = useState(false);
   return (
     <Box
       bg="linear-gradient(45deg, rgba(101,140,74,1) 0%, rgba(137,188,104,1) 100%)"
@@ -42,7 +44,10 @@ const Navbar = () => {
           w={"10%"}
           borderRadius={"50%"}
           p={2}
-          onClick={() => navigate("/")}
+          onClick={() => {
+            navigate("/");
+            setIsLoginClicked(false);
+          }}
         />
         <IconButton
           display={["flex", "none"]}
@@ -66,7 +71,10 @@ const Navbar = () => {
             Jobs
           </Button>
         </HStack>
-        <Link to="/login">
+        <Link
+          to="/login"
+          style={{ display: isLoginClicked ? "none" : "block" }}
+        >
           <Button
             colorScheme="white"
             variant="outline"
@@ -74,6 +82,7 @@ const Navbar = () => {
               bg: "white",
               color: "green.500",
             }}
+            onClick={() => setIsLoginClicked(true)}
           >
             Login / Register
           </Button>
