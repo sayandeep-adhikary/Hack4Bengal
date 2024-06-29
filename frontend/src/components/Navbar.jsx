@@ -20,7 +20,11 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box bg="gray.200" py={4}>
+    <Box
+      bg="linear-gradient(45deg, rgba(101,140,74,1) 0%, rgba(137,188,104,1) 100%)"
+      color={"white"}
+      py={4}
+    >
       <Flex
         maxW="container.lg"
         mx="auto"
@@ -31,23 +35,26 @@ const Navbar = () => {
         <IconButton
           display={["flex", "none"]}
           aria-label="Menu"
-          colorScheme="teal"
+          colorScheme="white"
           icon={<RiMenu2Fill size={20} />}
           onClick={onOpen}
         />
         <HStack gap={10} display={["none", "flex"]}>
-          <Button variant="link" colorScheme="teal">
+          <Button variant="link" colorScheme="white">
             Mock Interview
           </Button>
-          <Button variant="link" colorScheme="teal">
+          <Button variant="link" colorScheme="white">
             Resources
           </Button>
-          <Button variant="link" colorScheme="teal">
+          <Button variant="link" colorScheme="white">
             Jobs
           </Button>
         </HStack>
         <Link to="/login">
-          <Button colorScheme="teal" variant="outline">
+          <Button colorScheme="white" variant="outline" _hover={{
+            bg: "white",
+            color: "green.500"
+          }}>
             Login / Register
           </Button>
         </Link>
@@ -67,17 +74,17 @@ const Navbar = () => {
           </DrawerHeader>
           <DrawerBody>
             <VStack spacing={4} alignItems={"start"} h={"full"}>
-              <Button variant="link" colorScheme="teal" onClick={onClose}>
+              <Button variant="link" colorScheme="white" onClick={onClose}>
                 Mock Interview
               </Button>
-              <Button variant="link" colorScheme="teal" onClick={onClose}>
+              <Button variant="link" colorScheme="white" onClick={onClose}>
                 Resources
               </Button>
-              <Button variant="link" colorScheme="teal" onClick={onClose}>
+              <Button variant="link" colorScheme="white" onClick={onClose}>
                 Jobs
               </Button>
               <Link to="/login" onClick={onClose}>
-                <Button colorScheme="teal" variant="outline" w={"full"}>
+                <Button colorScheme="white" variant="outline" w={"full"}>
                   Login / Register
                 </Button>
               </Link>
