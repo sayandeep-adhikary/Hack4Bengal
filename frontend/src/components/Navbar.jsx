@@ -27,7 +27,7 @@ const Navbar = () => {
       borderBottom={"1.5px solid #fff"}
     >
       <Flex
-        maxW="container.lg"
+        maxW="container.lg" 
         mx="auto"
         px={4}
         align="center"
