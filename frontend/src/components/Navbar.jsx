@@ -12,12 +12,15 @@ import {
   useDisclosure,
   Text,
   VStack,
+  Image,
 } from "@chakra-ui/react";
 import { RiMenu2Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import logo1 from "../assets/logo1.png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
@@ -27,12 +30,20 @@ const Navbar = () => {
       borderBottom={"1.5px solid #fff"}
     >
       <Flex
-        maxW="container.lg" 
+        maxW="container.lg"
         mx="auto"
         px={4}
         align="center"
-        justifyContent={"space-between"}
+        justifyContent={"space-around"}
       >
+        <Image
+        cursor={'pointer'}
+          src={logo1}
+          w={"10%"}
+          borderRadius={"50%"}
+          p={2}
+          onClick={() => navigate("/")}
+        />
         <IconButton
           display={["flex", "none"]}
           aria-label="Menu"

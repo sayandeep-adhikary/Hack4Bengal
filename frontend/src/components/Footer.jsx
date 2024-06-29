@@ -1,5 +1,5 @@
 import React from "react";
-import badge from "../assets/badge.png";
+import badge from "../assets/logo1.png";
 
 import {
   Box,
@@ -42,6 +42,8 @@ export default function Footer() {
           left={"0"}
           right={"0"}
           // top={"2rem"}
+          w={'8%'}
+          borderRadius={'50%'}
           textAlign={"center"}
           m={"auto"}
         />
