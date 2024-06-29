@@ -6,13 +6,13 @@ import RoomPage from "./screens/Room";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
+    <>
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<LobbyScreen />} />
         <Route path="/room/:roomId" element={<RoomPage />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
