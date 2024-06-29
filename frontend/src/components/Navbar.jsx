@@ -37,7 +37,7 @@ const Navbar = () => {
         justifyContent={"space-around"}
       >
         <Image
-        cursor={'pointer'}
+          cursor={"pointer"}
           src={logo1}
           w={"10%"}
           borderRadius={"50%"}
@@ -52,7 +52,11 @@ const Navbar = () => {
           onClick={onOpen}
         />
         <HStack gap={10} display={["none", "flex"]}>
-          <Button variant="link" colorScheme="white">
+          <Button
+            variant="link"
+            colorScheme="white"
+            onClick={() => navigate("/lobby")}
+          >
             Mock Interview
           </Button>
           <Button variant="link" colorScheme="white">
