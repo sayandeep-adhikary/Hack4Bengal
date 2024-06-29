@@ -38,8 +38,11 @@ const LobbyScreen = () => {
         <div className="wrapper">
           <p className="lobby-heading">Lobby</p>
           <form onSubmit={handleSubmitForm}>
-            <label htmlFor="email">Email ID</label>
+            <label className="label" htmlFor="email">
+              Email ID
+            </label>
             <input
+              className="input"
               type="email"
               id="email"
               value={email}
@@ -47,14 +50,17 @@ const LobbyScreen = () => {
             />
             <div style={{ marginBottom: "1rem" }}></div>
             <br />
-            <label htmlFor="room">Room Number</label>
+            <label className="label" htmlFor="room">
+              Room Number
+            </label>
             <input
+              className="input"
               type="text"
               id="room"
               value={room}
               onChange={(e) => setRoom(e.target.value)}
             />
-            <br/>
+            <br />
             <button className="button">Join</button>
           </form>
         </div>
