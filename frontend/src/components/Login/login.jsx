@@ -57,14 +57,14 @@ export default function Login() {
   // }, [loggedin, navigate]);
 
   const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'framework',
-    defaultValue: 'react',
+    name: "framework",
+    defaultValue: "react",
     onChange: console.log,
-  })
+  });
 
-  const group = getRootProps()
+  const group = getRootProps();
 
-  const options = ['Candidate','Company'];
+  const options = ["Candidate", "Company"];
 
   return (
     <>
@@ -80,7 +80,12 @@ export default function Login() {
             >
               {signedup ? "Register" : "Login"}
             </Heading>
-            <HStack {...group} w={'full'} justifyContent={'space-between'} gap={[1, 5]}>
+            <HStack
+              {...group}
+              w={"full"}
+              justifyContent={"space-between"}
+              gap={[1, 5]}
+            >
               {options.map((value) => {
                 const radio = getRadioProps({ value });
                 return (
@@ -135,7 +140,13 @@ export default function Login() {
               </InputRightElement>
             </InputGroup>
             <Button
-              colorScheme="teal"
+              className="btn-border"
+              bg="linear-gradient(45deg, rgba(101,140,74,1) 0%, rgba(137,188,104,1) 100%)"
+              color={"white"}
+              _hover={{
+                bg: "white",
+                color: "green.500",
+              }}
               mx={"auto"}
               mt={4}
               w={"full"}
@@ -196,10 +207,15 @@ export default function Login() {
               {signedup ? "Already have an account?" : "Don't have an account?"}
             </Text>
             <Button
-              colorScheme="teal"
-              variant={"outline"}
+              className="btn-border"
+              bg="linear-gradient(45deg, rgba(101,140,74,1) 0%, rgba(137,188,104,1) 100%)"
+              color={"white"}
+              _hover={{
+                bg: "white",
+                color: "green.500",
+              }}
               mx={"auto"}
-              mt={2}
+              mt={4}
               w={"full"}
               onClick={() => {
                 setSignedUp(!signedup);
@@ -225,7 +241,7 @@ function RadioCard(props) {
   const checkbox = getRadioProps();
 
   return (
-    <Box as="label" minW={'50%'}>
+    <Box as="label" minW={"50%"}>
       <input {...input} required />
       <Box
         {...checkbox}
@@ -234,7 +250,7 @@ function RadioCard(props) {
         borderRadius="md"
         boxShadow="md"
         _checked={{
-          bg: "teal.600",
+          bg: "#658C4A",
           color: "white",
           borderColor: "teal.600",
         }}

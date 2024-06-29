@@ -1,0 +1,115 @@
+import {
+  Box,
+  Flex,
+  Button,
+  HStack,
+  IconButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  useDisclosure,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { RiMenu2Fill } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
+
+const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <Box
+      bg="linear-gradient(45deg, rgba(101,140,74,1) 0%, rgba(137,188,104,1) 100%)"
+      color={"white"}
+      py={4}
+      borderBottom={"1.5px solid #fff"}
+    >
+      <Flex
+        maxW="container.lg" 
+        mx="auto"
+        px={4}
+        align="center"
+        justifyContent={"space-between"}
+      >
+        <IconButton
+          display={["flex", "none"]}
+          aria-label="Menu"
+          colorScheme="white"
+          icon={<RiMenu2Fill size={20} />}
+          onClick={onOpen}
+        />
+        <HStack gap={10} display={["none", "flex"]}>
+          <Button variant="link" colorScheme="white">
+            Mock Interview
+          </Button>
+          <Button variant="link" colorScheme="white">
+            Resources
+          </Button>
+          <Button variant="link" colorScheme="white">
+            Jobs
+          </Button>
+        </HStack>
+        <Link to="/login">
+          <Button
+            colorScheme="white"
+            variant="outline"
+            _hover={{
+              bg: "white",
+              color: "green.500",
+            }}
+          >
+            Login / Register
+          </Button>
+        </Link>
+      </Flex>
+      <Drawer placement={"left"} onClose={onClose} isOpen={isOpen} size={"xs"}>
+        <DrawerOverlay />
+        <DrawerContent bg="linear-gradient(45deg, rgba(101,140,74,1) 0%, rgba(137,188,104,1) 100%)">
+          <DrawerHeader borderBottomWidth="1px">
+            <HStack justifyContent={"space-between"}>
+              <Text variant="h6" color={"white"}>
+                Menu
+              </Text>
+              <IconButton
+                aria-label="Close"
+                icon={<IoMdClose size={20} />}
+                onClick={onClose}
+              />
+            </HStack>
+          </DrawerHeader>
+          <DrawerBody>
+            <VStack
+              spacing={4}
+              alignItems={"start"}
+              justifyContent={"flex-start"}
+              h={"full"}
+              pos={"relative"}
+            >
+              <Button variant="link" color="white" onClick={onClose}>
+                Mock Interview
+              </Button>
+              <Button variant="link" color="white" onClick={onClose}>
+                Resources
+              </Button>
+              <Button variant="link" color="white" onClick={onClose}>
+                Jobs
+              </Button>
+              <Link
+                href="/login"
+                style={{ minWidth: "100%", position: "absolute", bottom: 20 }}
+              >
+                <Button color="white" variant="outline" w={"full"}>
+                  Login / Register
+                </Button>
+              </Link>
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </Box>
+  );
+};
+
+export default Navbar;
