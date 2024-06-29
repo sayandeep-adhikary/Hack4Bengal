@@ -32,6 +32,7 @@ html {
   align-items: center;
   background-color: white;
   border-radius: 20px;
+  margin-top: 5rem;
 }
 
 .wrapper {
@@ -76,5 +77,91 @@ input {
   border-radius: 5px;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  cursor: pointer;
+}
+
+/* Room.jsx */
+
+.room-container {
+  width: 100vw;
+  height: 100vh;
+  /* background-color: #092635; */
+  background-image: url(assets/backimage.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: fill;
+}
+
+.myStream {
+  display: inline-block;
+}
+
+.remoteStream {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.screens {
+  justify-content: center;
+}
+
+.other-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.end-btn {
+  font-size: 20px;
+  background-color: red;
+  color: white;
+  padding: 1rem 1.25rem;
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+.welcome-text {
+  font-size: 28px;
+  text-align: center;
+  color: black;
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold;
+  padding-top: 5rem;
+}
+
+.wait-text {
+  font-size: 18px;
+  text-align: center;
+  color: black;
+  font-family: "Libre Baskerville", serif;
+  margin-top: 1rem;
+}
+
+.call-btn {
+  padding: 1.5rem 3rem;
+  margin-top: 3rem;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: bolder;
+  background-color: #658c48;
+  color: white;
+  border-radius: 5px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+
+.accept-btn {
+  font-size: 20px;
+  background-color: green;
+  color: white;
+  padding: 1rem 1.25rem;
+  border-radius: 100px;
+  border: none;
+  outline: none;
   cursor: pointer;
 }
