@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Libre Baskerville", serif;
+}
+html {
+  font-size: 62.5%;
+  font-family: "Libre Baskerville", serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.lobby-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url(assets/backimage.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: fill;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding-top: 5rem;
+}
+
+.lobby-form {
+  width: 30%;
+  max-height: 70%;
+  padding: 3rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.lobby-heading {
+  font-size: 36px;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input {
+  width: 100%;
+  height: 4rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #f8faf5;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+}
+
+.button {
+  width: 100%;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: bolder;
+  background-color: #658c48;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  border-radius: 5px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  cursor: pointer;
 }
