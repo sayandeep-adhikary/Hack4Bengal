@@ -38,3 +38,16 @@
   background: url("./assets/background.png") no-repeat;
   background-position: center bottom;
 }
+
+.btn-border:hover {
+  border: 1px solid #658c4a !important;
+}
+
+.hero1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  /* bottom: 0; */
+  margin: auto;
+}
