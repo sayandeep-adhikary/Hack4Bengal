@@ -10,3 +10,7 @@
     background-image: radial-gradient(#658c4a 1px, #e7cec0 1px);
     background-size: 18px 18px;
 }
+
+.logo {
+    width: 2rem !important;
+}

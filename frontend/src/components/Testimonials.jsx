@@ -14,31 +14,35 @@ import React, { useEffect, useState } from "react";
 import vector from "../assets/vector.png";
 import { FaShippingFast, FaSmile, FaLeaf } from "react-icons/fa";
 import { RiCustomerService2Fill } from "react-icons/ri";
+import  interview from "../assets/interview.png";
+import  learning from "../assets/learning.webp";
+import  resources from "../assets/resources.png";
+import  confidence from "../assets/confidence.png";
 
 // import "../styles/testimonials.scss";
 
 const cardData = [
   {
     id: 1,
-    image: <FaShippingFast size={"3rem"} color="gray" />,
+    image: interview,
     title: "Realistic Mock Interviews",
     desc: "Experience interviews that closely mimic real job settings, helping you practice and perfect your responses.",
   },
   {
     id: 2,
-    image: <FaSmile size={"3rem"} color="gray" />,
+    image: learning,
     title: "Comprehensive Resources",
     desc: "Access a wide range of tools, guides, and tips to enhance your job search and interview skills.",
   },
   {
     id: 3,
-    image: <FaLeaf size={"3rem"} color="gray" />,
+    image: resources,
     title: "Personalized Practice",
     desc: "Tailor your preparation with scenarios and questions specific to your target roles and industries.",
   },
   {
     id: 4,
-    image: <RiCustomerService2Fill size={"3rem"} color="gray" />,
+    image: confidence,
     title: "Confidence Building",
     desc: "Strengthen your readiness and self-assurance with consistent practice and constructive support.",
   },
@@ -49,7 +53,7 @@ export default function Testimonials() {
   useEffect(() => {
     const timeOut = setTimeout(() => {
       setLoaded(true);
-    }, 3000);
+    }, 2000);
     return () => clearTimeout(timeOut);
   }, []);
   return (
@@ -115,8 +119,8 @@ const Card = ({ image, title, desc, loaded }) => {
         textAlign={"left"}
         justifyContent={"center"}
       >
-        <SkeletonCircle isLoaded={loaded} borderRadius={"1rem"}>
-          {image}
+        <SkeletonCircle isLoaded={loaded} borderRadius={"1rem"} className="logo">
+          <Image src={image} alt={title}  />
         </SkeletonCircle>
         <SkeletonText
           isLoaded={loaded}
