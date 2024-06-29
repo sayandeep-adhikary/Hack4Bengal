@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+.containertwo {
+    background-image: linear-gradient(0deg, rgba(101, 140, 74, 0.9), rgba(101, 140, 74, 0.9)),
+        url("./assets/job.jpg");
+    background-size: cover;
+}
+.testimonials {
+    background-color: #e7cec0;
+    opacity: 1;
+    background-image: radial-gradient(#658c4a 1px, #e7cec0 1px);
+    background-size: 18px 18px;
+}

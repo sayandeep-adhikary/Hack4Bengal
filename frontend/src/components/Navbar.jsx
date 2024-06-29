@@ -24,6 +24,7 @@ const Navbar = () => {
       bg="linear-gradient(45deg, rgba(101,140,74,1) 0%, rgba(137,188,104,1) 100%)"
       color={"white"}
       py={4}
+      borderBottom={"1.5px solid #fff"}
     >
       <Flex
         maxW="container.lg"
