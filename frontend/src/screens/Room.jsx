@@ -1,13 +1,25 @@
 import React, { useEffect, useCallback, useState } from "react";
 import ReactPlayer from "react-player";
+import { useNavigate } from "react-router-dom";
 import peer from "../service/peer";
 import { useSocket } from "../context/SocketProvider";
+
+// icon
+import { MdCallEnd, MdCall } from "react-icons/md";
+import { BsFillMicMuteFill } from "react-icons/bs";
 
 const RoomPage = () => {
   const socket = useSocket();
   const [remoteSocketId, setRemoteSocketId] = useState(null);
   const [myStream, setMyStream] = useState();
   const [remoteStream, setRemoteStream] = useState();
+  const [connectedMessage, setConnectedMessage] = useState(true);
+  const [showSendStream, setShowSendStream] = useState(true);
+  const [showCall, setShowCall] = useState(true);
+  const [waitMessage, setWaitMessage] = useState(false);
+  const navigate = useNavigate();
+
+  // const [muteBtn, setMuteBtn] = useState(false);
 
   const handleUserJoined = useCallback(({ email, id }) => {
     console.log(`Email ${email} joined room`);
@@ -60,9 +72,14 @@ const RoomPage = () => {
   }, [remoteSocketId, socket]);
 
   useEffect(() => {
-    peer.peer.addEventListener("negotiationneeded", handleNegoNeeded);
+    if (peer.peer) {
+      peer.peer.addEventListener("negotiationneeded", handleNegoNeeded);
+    }
     return () => {
-      peer.peer.removeEventListener("negotiationneeded", handleNegoNeeded);
+      // peer.peer.removeEventListener("negotiationneeded", handleNegoNeeded);
+      if (peer.peer) {
+        peer.peer.removeEventListener("negotiationneeded", handleNegoNeeded);
+      }
     };
   }, [handleNegoNeeded]);
 
@@ -109,36 +126,136 @@ const RoomPage = () => {
     handleNegoNeedFinal,
   ]);
 
+  // new functions
+  const hideCallBtn = () => {
+    setShowCall(false);
+    setWaitMessage(true);
+    setShowSendStream(false);
+    setConnectedMessage(false);
+  };
+
+  const acceptCallFunc = () => {
+    // setMuteBtn(true);
+    setShowSendStream(false);
+  };
+
+  const disconnectCall = useCallback(() => {
+    if (myStream) {
+      myStream.getTracks().forEach((track) => track.stop());
+      setMyStream(null);
+    }
+
+    if (remoteStream) {
+      remoteStream.getTracks().forEach((track) => track.stop());
+      setRemoteStream(null);
+    }
+
+    if (peer.peer) {
+      peer.peer.close();
+      peer.peer = null;
+    }
+
+    setRemoteSocketId(null);
+    setConnectedMessage(true);
+    setShowSendStream(true);
+    setShowCall(true);
+    setWaitMessage(false);
+  }, [myStream, remoteStream]);
+
   return (
-    <div>
-      <h1>Room Page</h1>
-      <h4>{remoteSocketId ? "Connected" : "No one in room"}</h4>
-      {myStream && <button onClick={sendStreams}>Send Stream</button>}
-      {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
+    <div className="room-container">
       {myStream && (
-        <>
-          <h1>My Stream</h1>
-          <ReactPlayer
-            playing
-            // muted
-            height="100px"
-            width="200px"
-            url={myStream}
-          />
-        </>
+        <div className="screens">
+          {remoteStream && (
+            <>
+              {/* <h1>Remote Stream</h1> */}
+              <div className="remoteStream">
+                <ReactPlayer
+                  playing
+                  // muted
+                  height="80vh"
+                  width="80vw"
+                  url={remoteStream}
+                />
+              </div>
+            </>
+          )}
+          {myStream && (
+            <>
+              {/* <h1>My Stream</h1> */}
+              <div className="myStream">
+                <ReactPlayer
+                  playing
+                  // muted
+                  height="30vh"
+                  width="30vh"
+                  url={myStream}
+                />
+              </div>
+            </>
+          )}
+        </div>
       )}
-      {remoteStream && (
-        <>
-          <h1>Remote Stream</h1>
-          <ReactPlayer
-            playing
-            // muted
-            height="200px"
-            width="400px"
-            url={remoteStream}
-          />
-        </>
-      )}
+
+      <div className="other-content">
+        {/* new code */}
+        {!remoteSocketId && (
+          <>
+            <p className="welcome-text">Welcome!</p>
+            <p className="wait-text">
+              Please wait for other user to connect...
+            </p>
+          </>
+        )}
+        {remoteSocketId && !remoteStream && connectedMessage && (
+          <p className="welcome-text">Connected!</p>
+        )}
+        {/* new code */}
+        {/* <h4>{remoteSocketId ? "Connected" : "No one in room"}</h4> */}
+
+        <div className="btns-grp">
+          {myStream && remoteStream && showSendStream && (
+            <button
+              className="accept-btn"
+              onClick={() => {
+                sendStreams();
+                acceptCallFunc();
+              }}
+            >
+              <MdCall></MdCall>
+            </button>
+          )}
+          {remoteSocketId && !remoteStream && showCall && (
+            <button
+              className="call-btn"
+              onClick={() => {
+                handleCallUser();
+                hideCallBtn();
+              }}
+            >
+              Call
+            </button>
+          )}
+          {remoteStream && (
+            <>
+              {/* {muteBtn && (
+                <button className="mute-btn">
+                  <BsFillMicMuteFill />
+                </button>
+              )} */}
+              <button
+                onClick={() => {
+                  disconnectCall();
+                  navigate(-1);
+                }}
+                className="end-btn"
+              >
+                <MdCallEnd></MdCallEnd>
+              </button>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
