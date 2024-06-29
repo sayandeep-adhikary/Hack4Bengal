@@ -33,27 +33,32 @@ const LobbyScreen = () => {
   }, [socket, handleJoinRoom]);
 
   return (
-    <div>
-      <h1>Lobby</h1>
-      <form onSubmit={handleSubmitForm}>
-        <label htmlFor="email">Email ID</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <label htmlFor="room">Room Number</label>
-        <input
-          type="text"
-          id="room"
-          value={room}
-          onChange={(e) => setRoom(e.target.value)}
-        />
-        <br />
-        <button>Join</button>
-      </form>
+    <div className="lobby-container">
+      <div className="lobby-form libre-baskerville-regular">
+        <div className="wrapper">
+          <p className="lobby-heading">Lobby</p>
+          <form onSubmit={handleSubmitForm}>
+            <label htmlFor="email">Email ID</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <div style={{ marginBottom: "1rem" }}></div>
+            <br />
+            <label htmlFor="room">Room Number</label>
+            <input
+              type="text"
+              id="room"
+              value={room}
+              onChange={(e) => setRoom(e.target.value)}
+            />
+            <br/>
+            <button className="button">Join</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

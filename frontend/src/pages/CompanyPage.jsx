@@ -153,7 +153,6 @@ const CompanyPage = () => {
         </VStack>
       </Flex>
       {postJob && <PostJob />}
-      <Footer />
     </>
   );
 };
