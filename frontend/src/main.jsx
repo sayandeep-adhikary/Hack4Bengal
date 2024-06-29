@@ -1,31 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-<<<<<<< HEAD
 import App from "./App.jsx";
 import "./index.css";
 import { ChakraProvider } from "@chakra-ui/react";
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
-  </React.StrictMode>
-);
-=======
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { SocketProvider } from "./context/SocketProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <SocketProvider>
-        <App />
-      </SocketProvider>
+      <ChakraProvider>
+        <SocketProvider>
+          <App />
+        </SocketProvider>
+      </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
@@ -34,4 +25,3 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
->>>>>>> c21369bbd90edb6aafe4133f4427b9e11d50dcb9
