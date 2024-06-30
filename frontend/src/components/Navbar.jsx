@@ -70,6 +70,9 @@ const Navbar = () => {
           <Button variant="link" colorScheme="white">
             Jobs
           </Button>
+          <Button variant="link" colorScheme="white">
+            Community
+          </Button>
         </HStack>
         <Link
           to="/login"
