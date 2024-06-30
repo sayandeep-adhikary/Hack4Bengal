@@ -8,6 +8,7 @@
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Screenshots](#screenshots)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Contributors](#contributors)
@@ -53,13 +54,33 @@ To get a local copy up and running, follow these simple steps.
    git clone https://github.com/sayandeep-adhikary/Hack4Bengal.git
    ```
 
-2. Navigate to the project directory:
+2. Navigate to the backend directory:
 
    ```bash
-   cd frontend
+   cd backend
    ```
 
 3. Install the dependencies:
+
+   Using npm:
+   ```bash
+   npm install
+   ```
+
+   Using yarn:
+   ```bash
+   yarn install
+   ```
+4. Navigate to the frontend directory:
+
+   ```bash
+   cd ..
+   ```
+   
+   ```bash
+   cd frontend
+   ```
+5. Install the dependencies:
 
    Using npm:
    ```bash
@@ -80,7 +101,26 @@ To get a local copy up and running, follow these simple steps.
    npm run dev
    ```
 
-2. Open your browser and navigate to `http://localhost:3000` to see the application in action.
+2. Open your browser and navigate to `http://localhost:5173` to see the application in action.
+
+## Screenshots
+
+# Home Page
+![home](https://github.com/sayandeep-adhikary/Hack4Bengal/assets/93661020/d83ebc05-2a53-4fad-8c51-eceebe09bd86)
+
+# Login/Register Page
+<img width="917" alt="login" src="https://github.com/sayandeep-adhikary/Hack4Bengal/assets/93661020/cc19bea6-64c0-406b-b23d-09f4ac780331">
+<img width="949" alt="register" src="https://github.com/sayandeep-adhikary/Hack4Bengal/assets/93661020/eb25764b-112b-4309-91b6-eb1ca552403e">
+
+# Candidate's DashBoard
+![user](https://github.com/sayandeep-adhikary/Hack4Bengal/assets/93661020/34ee279a-fc72-477c-ac89-e661d688639a)
+
+# Company's DashBoard
+![company](https://github.com/sayandeep-adhikary/Hack4Bengal/assets/93661020/8defe10f-0d2b-446f-8eb0-688b727a564e)
+
+# Waiting room in Mock Interview
+<img width="946" alt="vc" src="https://github.com/sayandeep-adhikary/Hack4Bengal/assets/93661020/319b908d-7c68-4c1a-ab17-c71c06c08af3">
+
 
 ## Roadmap
 
